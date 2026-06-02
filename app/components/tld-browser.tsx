@@ -72,7 +72,7 @@ export function TldBrowser({
 
         {brand && filtered.length === 0 && (
           <p className="py-3 text-[0.82rem] text-ink-secondary">
-            No TLDs match "{q}".
+            No TLDs match &ldquo;{q}&rdquo;.
           </p>
         )}
 
