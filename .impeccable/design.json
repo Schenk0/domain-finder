@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-01T21:45:00Z",
+  "title": "Design System: Domain Finder",
+  "extensions": {
+    "colorMeta": {
+      "vermillion-seal": {
+        "role": "primary",
+        "displayName": "Vermillion Seal",
+        "canonical": "oklch(0.44 0.17 8)",
+        "tonalRamp": [
+          "oklch(0.18 0.08 8)",
+          "oklch(0.28 0.12 8)",
+          "oklch(0.38 0.18 8)",
+          "oklch(0.44 0.17 8)",
+          "oklch(0.55 0.15 8)",
+          "oklch(0.68 0.12 8)",
+          "oklch(0.82 0.06 8)",
+          "oklch(0.95 0.02 8)"
+        ]
+      },
+      "pure-white": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "oklch(1.000 0.000 0)"
+      },
+      "quiet-surface": {
+        "role": "neutral",
+        "displayName": "Quiet Surface",
+        "canonical": "oklch(0.965 0.000 0)"
+      },
+      "press-ink": {
+        "role": "neutral",
+        "displayName": "Press Ink",
+        "canonical": "oklch(0.145 0.008 10)",
+        "tonalRamp": [
+          "oklch(0.10 0.006 10)",
+          "oklch(0.145 0.008 10)",
+          "oklch(0.25 0.006 10)",
+          "oklch(0.35 0.005 10)",
+          "oklch(0.49 0.005 10)",
+          "oklch(0.62 0.004 10)",
+          "oklch(0.78 0.003 10)",
+          "oklch(0.92 0.002 10)"
+        ]
+      },
+      "cobalt-annotation": {
+        "role": "secondary",
+        "displayName": "Cobalt Annotation",
+        "canonical": "oklch(0.55 0.14 260)",
+        "tonalRamp": [
+          "oklch(0.20 0.08 260)",
+          "oklch(0.30 0.12 260)",
+          "oklch(0.42 0.15 260)",
+          "oklch(0.55 0.14 260)",
+          "oklch(0.65 0.11 260)",
+          "oklch(0.75 0.08 260)",
+          "oklch(0.85 0.04 260)",
+          "oklch(0.95 0.02 260)"
+        ]
+      },
+      "secondary-ink": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "oklch(0.49 0.005 10)"
+      },
+      "specimen-green": {
+        "role": "semantic",
+        "displayName": "Specimen Green",
+        "canonical": "oklch(0.52 0.14 155)",
+        "tonalRamp": [
+          "oklch(0.20 0.06 155)",
+          "oklch(0.32 0.10 155)",
+          "oklch(0.42 0.13 155)",
+          "oklch(0.52 0.14 155)",
+          "oklch(0.62 0.12 155)",
+          "oklch(0.75 0.08 155)",
+          "oklch(0.88 0.04 155)",
+          "oklch(0.95 0.03 155)"
+        ]
+      },
+      "warm-caution": {
+        "role": "semantic",
+        "displayName": "Warm Caution",
+        "canonical": "oklch(0.72 0.14 80)",
+        "tonalRamp": [
+          "oklch(0.25 0.06 80)",
+          "oklch(0.38 0.10 80)",
+          "oklch(0.50 0.13 80)",
+          "oklch(0.62 0.14 80)",
+          "oklch(0.72 0.14 80)",
+          "oklch(0.82 0.10 80)",
+          "oklch(0.92 0.05 80)",
+          "oklch(0.96 0.03 80)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The 'Domain Finder' title in hero state. Large, tight, compressed."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section heads: 'Starred domains', 'Domain candidates'. Firm and clear."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, reason text, helper copy. Capped at 65ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Table headers, filter labels, section kickers. Always uppercase, max 3 words."
+      }
+    },
+    "shadows": [
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 3px oklch(0.55 0.14 260 / 0.15)",
+        "purpose": "Focus ring for keyboard navigation. Cobalt annotation at 15% opacity."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+        "purpose": "Default easing for state transitions (hover, focus)."
+      },
+      {
+        "name": "duration-fast",
+        "value": "120ms",
+        "purpose": "Button hover, focus ring transitions. Crisp, no lingering."
+      },
+      {
+        "name": "duration-medium",
+        "value": "200ms",
+        "purpose": "Row highlight transitions, expand/collapse."
+      }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "580px" },
+      { "name": "tablet", "value": "860px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The vermillion seal CTA. Used for Search.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg> Search</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; min-width: 132px; padding: 10px 20px; background: oklch(0.44 0.17 8); color: #fff; font-family: Archivo, system-ui, sans-serif; font-size: 0.94rem; font-weight: 700; border: 1px solid oklch(0.44 0.17 8); border-radius: 6px; cursor: pointer; transition: background 120ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 120ms cubic-bezier(0.25, 0.1, 0.25, 1); } .ds-btn-primary:hover { background: oklch(0.38 0.18 8); border-color: oklch(0.38 0.18 8); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px oklch(0.55 0.14 260 / 0.15); } .ds-btn-primary svg { width: 18px; height: 18px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action button. Used for Check, Retry.",
+      "html": "<button class=\"ds-btn-ghost\">Check</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 32px; padding: 6px 12px; background: transparent; color: oklch(0.145 0.008 10); font-family: Archivo, system-ui, sans-serif; font-size: 0.94rem; font-weight: 700; border: 1px solid oklch(0.965 0.000 0); border-radius: 6px; cursor: pointer; transition: background 120ms cubic-bezier(0.25, 0.1, 0.25, 1); } .ds-btn-ghost:hover { background: oklch(0.965 0.000 0); } .ds-btn-ghost:focus-visible { outline: none; box-shadow: 0 0 0 3px oklch(0.55 0.14 260 / 0.15); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Standard text field with search icon.",
+      "html": "<div class=\"ds-input-shell\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input class=\"ds-input\" placeholder=\"Acme Studio\" /></div>",
+      "css": ".ds-input-shell { display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 14px; background: #fff; border: 1px solid oklch(0.49 0.005 10 / 0.3); border-radius: 6px; transition: border-color 120ms, box-shadow 120ms; } .ds-input-shell:focus-within { border-color: oklch(0.55 0.14 260); box-shadow: 0 0 0 3px oklch(0.55 0.14 260 / 0.15); } .ds-input-shell svg { color: oklch(0.49 0.005 10); flex-shrink: 0; } .ds-input { flex: 1; height: 42px; border: none; background: transparent; color: oklch(0.145 0.008 10); font-family: Archivo, system-ui, sans-serif; font-size: 0.94rem; outline: none; } .ds-input::placeholder { color: oklch(0.49 0.005 10); }"
+    },
+    {
+      "name": "Available Badge",
+      "kind": "chip",
+      "refersTo": "badge-available",
+      "description": "Status badge for available domains.",
+      "html": "<span class=\"ds-badge-available\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"/><path d=\"m9 11 3 3L22 4\"/></svg> Available</span>",
+      "css": ".ds-badge-available { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; background: oklch(0.95 0.03 155); color: oklch(0.52 0.14 155); font-family: Archivo, system-ui, sans-serif; font-size: 0.78rem; font-weight: 700; border-radius: 3px; white-space: nowrap; } .ds-badge-available svg { width: 14px; height: 14px; }"
+    },
+    {
+      "name": "Taken Badge",
+      "kind": "chip",
+      "refersTo": "badge-taken",
+      "description": "Status badge for taken domains.",
+      "html": "<span class=\"ds-badge-taken\">Taken</span>",
+      "css": ".ds-badge-taken { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; background: oklch(0.95 0.03 25); color: oklch(0.50 0.14 25); font-family: Archivo, system-ui, sans-serif; font-size: 0.78rem; font-weight: 700; border-radius: 3px; white-space: nowrap; }"
+    },
+    {
+      "name": "Panel Card",
+      "kind": "card",
+      "refersTo": "card-panel",
+      "description": "Content panel for search form and result sections.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-panel-header\"><span class=\"ds-label\">SHORTLIST</span><h2 class=\"ds-headline\">Domain candidates</h2></div><div class=\"ds-panel-body\">Content here</div></div>",
+      "css": ".ds-panel { background: #fff; border: 1px solid oklch(0.965 0.000 0); border-radius: 8px; overflow: hidden; } .ds-panel-header { padding: 20px; border-bottom: 1px solid oklch(0.965 0.000 0); } .ds-panel-body { padding: 20px; } .ds-label { display: block; margin-bottom: 8px; font-family: Archivo, system-ui, sans-serif; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; color: oklch(0.44 0.17 8); } .ds-headline { margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; color: oklch(0.145 0.008 10); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Type Specimen",
+    "overview": "A type specimen page printed on heavy, uncoated stock. Each domain is a glyph on display: precisely set, calmly spaced, presented without ornament. The vermillion seal marks what matters. The rest is white space and press ink.\n\nThe system values precision over softness. Tight radii, firm edges, crisp state changes. Nothing floats; elements sit flat on the page, separated by tone and ruled lines. Information is dense but never cluttered: the table is the native element, not a compromise. The search form is a specimen's caption field: functional, labeled, restrained.\n\nThis is not a SaaS dashboard with blue buttons and soft shadows. It is not a cute illustration-driven app. It is not a dark-mode terminal emulator. It is not a bland gray wireframe. It is a considered instrument with a single spot color and the confidence to let white space and typography carry the design.",
+    "keyCharacteristics": [
+      "Pure white canvas, zero tint",
+      "Flat elevation — depth through tonal shifts and 1px ruled borders",
+      "Tight, decisive radii (3-8px)",
+      "Two-family type pairing: Bricolage Grotesque (display) + Archivo (body)",
+      "One committed brand color (vermillion seal) used at key moments"
+    ],
+    "rules": [
+      { "name": "The Seal Rule", "body": "Vermillion appears on no more than 3 elements per viewport. Its rarity is the point.", "section": "colors" },
+      { "name": "The Achromatic Canvas Rule", "body": "The background is always pure white or quiet surface. No warm tints, no cool tints, no cream, no sand.", "section": "colors" },
+      { "name": "The Two-Family Rule", "body": "Bricolage Grotesque for display and headlines. Archivo for everything else. No third family. No exceptions.", "section": "typography" },
+      { "name": "The Label Ceiling Rule", "body": "Uppercase labels are capped at 3 words. Longer text drops to sentence case.", "section": "typography" },
+      { "name": "The Flat Press Rule", "body": "Surfaces do not float. They sit on the page separated by rules and whitespace, not by simulated depth.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use vermillion only for the primary CTA, starred-row highlights, and domain-hack coloring. Count the red elements per viewport: if it exceeds 3, one of them is wrong.",
+      "Do maintain pure white backgrounds with zero chroma.",
+      "Do set all body text in Archivo at ≥0.94rem.",
+      "Do use flat 1px borders for separation.",
+      "Do apply tight, decisive radii (3-8px).",
+      "Do test every text element for WCAG AA contrast."
+    ],
+    "donts": [
+      "Don't use blue as the primary color. No blue-700, no blue-800.",
+      "Don't add box-shadows for depth. Tonal shifts and borders only.",
+      "Don't use rounded-full (pill shapes) on buttons or panels.",
+      "Don't apply gradients to any element.",
+      "Don't add illustrations, emoji, or decorative icons.",
+      "Don't use dark mode.",
+      "Don't tint the background warm (cream, sand, beige, paper).",
+      "Don't use monospace for any element."
+    ]
+  }
+}
