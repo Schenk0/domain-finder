@@ -1,42 +1,75 @@
-# Domain Finder (Sandbox)
+# Domain Finder
 
-A Next.js app that generates domain ideas for a project and lets you check availability through Porkbun.
+**[domain-finder.schenk.technology](https://domain-finder.schenk.technology)**
 
-It takes a project name and short description, generates candidate domains across multiple strategies, shows pricing when available, and supports one-click live checks on individual domains.
+A Next.js app that generates creative domain name ideas for a project and surfaces pricing and availability through Porkbun.
 
-## What It Does
+Enter a project name and an optional description, and the app generates ranked domain candidates across multiple strategies — exact matches, prefixes, suffixes, domain hacks, brandable variants, and description-aware picks. Results include live Porkbun pricing, bulk DNS pre-checks, and optional per-domain availability checks.
 
-- Generates domains from several candidate types:
-  - exact matches on common and niche TLDs
-  - prefix variants (`use`, `get`, `try`, `go`, `join`)
-  - product suffix variants (`app`, `tool`, `site`)
-  - description-aware category variants
-  - domain hacks (for example `datafa.st`)
-  - brandable variants (`hq`, `labs`, `studio`, `works`, `tools`)
-- Groups and ranks results with simple scoring heuristics.
-- Shows Porkbun pricing metadata when available.
-- Allows live availability checks per domain (when API keys are configured).
-- Supports filtering by domain text and TLD.
-- Supports starring domains into a shortlist panel.
-- Includes direct Porkbun checkout links for each result.
+## Features
+
+- **Multi-strategy generation** — exact matches on common/niche TLDs, prefix variants (`use`, `get`, `try`, `go`, `join`), product suffixes (`app`, `tool`, `site`), brandable suffixes (`hq`, `labs`, `studio`, `works`, `tools`), domain hacks (e.g. `datafa.st`), and description-aware category variants.
+- **Scoring & ranking** — heuristic scoring favors `.com`, common TLDs, shorter names, and description-relevant TLDs.
+- **Grouped results** — candidates grouped by kind with collapsible TLD clusters.
+- **Bulk DNS pre-check** — automatically marks domains with NS records as taken via Cloudflare DNS-over-HTTPS.
+- **Live availability checks** — per-domain Porkbun API checks when API keys are configured.
+- **Pricing display** — registration and renewal prices from Porkbun, with promo prices highlighted.
+- **TLD browser** — fuzzy-searchable grid of all Porkbun TLDs to add any `brand.tld` to results.
+- **Starred shortlist** — pin domains to a top section for easy comparison.
+- **Domain text filter** — filter results by substring.
+- **Direct checkout links** — one-click Porkbun purchase links.
+- **Session persistence** — results and stars saved to IndexedDB per project.
+
+## Tech Stack
+
+- **Next.js 14** (App Router) with **React 18**
+- **Tailwind CSS v4**
+- **TypeScript**
+- **Fuse.js** for fuzzy TLD search
+- **Porkbun API** for pricing and availability
+- **Cloudflare DNS-over-HTTPS** for bulk NS lookups
+- **IndexedDB** for client-side session persistence
+
+## Project Structure
+
+```
+app/
+├── page.tsx                    Home — project name + description form
+├── search/page.tsx             Results page
+├── types.ts                    Shared types, grouping, formatting
+├── components/
+│   ├── domain-table.tsx        Grouped results table with star/check actions
+│   ├── domain-parts.tsx        Color-coded SLD rendering
+│   ├── status-badge.tsx        Availability badges
+│   └── tld-browser.tsx         Searchable TLD grid
+└── api/
+    ├── search/route.ts         Generate candidates + attach pricing
+    ├── check/route.ts          Single-domain Porkbun availability check
+    ├── tlds/route.ts           List all Porkbun TLDs with pricing
+    └── dns-check/route.ts      Bulk DNS NS-record check
+
+lib/
+├── domain-candidates.ts        Candidate generation engine
+├── porkbun.ts                  Porkbun API client + pricing cache
+├── dns-check.ts                Cloudflare DNS bulk checker
+└── storage.ts                  IndexedDB session persistence
+```
 
 ## Getting Started
 
-1. Install dependencies:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-2. Copy env file:
+Copy the env file:
 
 ```bash
 cp .env.example .env.local
 ```
 
-3. Add your Porkbun API credentials in `.env.local` (optional, but required for live availability checks).
-
-4. Start development:
+Optionally add your Porkbun API credentials in `.env.local` (see below), then start the dev server:
 
 ```bash
 npm run dev
@@ -46,16 +79,13 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Environment Variables
 
-Defined in `.env.example`:
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `PORKBUN_API_KEY` | No | Enables per-domain live availability checks |
+| `PORKBUN_SECRET_API_KEY` | No | Enables per-domain live availability checks |
 
-- `PORKBUN_API_KEY` - required for live availability checks.
-- `PORKBUN_SECRET_API_KEY` - required for live availability checks.
-- `PORKBUN_CHECK_LIMIT` - currently not used by the app logic.
-
-If credentials are missing, the app still works for candidate generation and pricing lookup, but availability remains `Not checked`.
+Without API keys the app still generates candidates, shows pricing, and runs DNS pre-checks — availability just stays "Not checked" for domains without NS records.
 
 ## To Do
 
 - [ ] Also look for domains like replacing l/i -> 1 or o -> 0 etc
-- [ ] Switch check to another provider and check everything automatically
-- [ ] Add custom search for more domains and TLDs
