@@ -59,13 +59,9 @@ export async function getPorkbunPricing() {
     return pricingCache.data;
   }
 
-  const response = await fetchWithTimeout(
-    "https://api.porkbun.com/api/json/v3/pricing/get",
-    {
-      next: { revalidate: 60 * 60 * 12 }
-    },
-    3500
-  ).catch(() => null);
+  const response = await fetch("https://api.porkbun.com/api/json/v3/pricing/get", {
+    next: { revalidate: 60 * 60 * 12 },
+  }).catch(() => null);
 
   if (!response?.ok) {
     return {};
